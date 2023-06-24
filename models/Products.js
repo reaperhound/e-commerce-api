@@ -20,6 +20,7 @@ const productSchema = mongoose.Schema({
         username: String,
         title: String,
         content: String,
+        rating: Number
     }],
     default: [],
   },

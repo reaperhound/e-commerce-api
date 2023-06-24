@@ -3,7 +3,7 @@
 - [x] Add to cart
 - [x] Increase count cart
 - [x] Decrease count cart
-- [ ] Remove from cart
+- [x] Remove from cart
 - [ ] review endpoint
 - [ ] rating endpoint
 - [ ] jwt

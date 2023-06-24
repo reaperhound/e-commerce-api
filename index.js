@@ -6,6 +6,7 @@ const userRoute = require("./routes/user");
 const productsRoute = require("./routes/product")
 const categoryRoute = require("./routes/category")
 const cartRoute = require("./routes/cart");
+const reviewRoute = require("./routes/review");
 
 const app = express();
 app.use(express.json());
@@ -48,6 +49,9 @@ app.use('/category', categoryRoute);
 
 // /cart
 app.use('/cart', cartRoute)
+
+// /review
+app.use('/review', reviewRoute)
 
 // Listening
 app.listen(PORT, () => {
