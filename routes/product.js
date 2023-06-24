@@ -38,9 +38,18 @@ router.get("/:productId", async (req, res) => {
 // add Products
 router.post("/", async (req, res) => {
   try {
-    const { owner, title, description, image, category, price } = req.body;
+    const { owner, title, description, image, category, price, brand } =
+      req.body;
 
-    if (!owner || !title || !description || !image || !category || !price) {
+    if (
+      !owner ||
+      !title ||
+      !description ||
+      !image ||
+      !category ||
+      !price ||
+      !brand
+    ) {
       const missingFields = [];
 
       if (!owner) {
@@ -74,7 +83,8 @@ router.post("/", async (req, res) => {
       description,
       image,
       category,
-      price
+      price,
+      brand,
     });
     data.save();
 
@@ -98,7 +108,6 @@ router.post("/", async (req, res) => {
 });
 
 // updateProducts
-
 router.patch("/:productId", async (req, res) => {
   try {
     const updateData = req.body;
@@ -134,6 +143,21 @@ router.delete("/:productId", async (req, res) => {
       ownnerProductDelete: ownerDelete,
       message: "Product deleted successfully",
     });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error, success: false, message: "Failed to Delete products" });
+  }
+});
+
+// get by category
+router.get("/category/:category", async (req, res) => {
+  try {
+    const { category } = req.params;
+    const data = await Product.find({ category: category });
+    res
+      .status(200)
+      .json({ sucess: true, data, message: "Products fetched succesfully" });
   } catch (error) {
     res
       .status(500)

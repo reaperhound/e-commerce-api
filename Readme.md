@@ -1,0 +1,8 @@
+- [ ] Right status code
+- [x] Category endpoint
+- [ ] cart endpoints
+- [ ] review endpoint
+- [ ] rating endpoint
+- [ ] jwt
+- [ ] google auth
+- [ ] refactor

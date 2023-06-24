@@ -35,6 +35,13 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  brand: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Number
+  },
   cartCount: {
     type: Number,
   },
