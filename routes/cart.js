@@ -35,4 +35,25 @@ router.patch("/add/:userId/:productId", async (req, res) => {
   }
 });
 
+// set count
+router.patch("/set/:userId/:cartId", async (req, res) => {
+  try {
+    const { userId, cartId } = req.params;
+    const { count } = req.body;
+
+    const data = await User.updateOne(
+      { _id: userId, "cart._id": cartId },
+      { $set: { "cart.$.count": count } }
+    );
+
+    res.status(200).json({ success: true, data, message: "Cart count set" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error, success: false, message: "Failed to add to Cart" });
+  }
+});
+
+
+
 module.exports = router;

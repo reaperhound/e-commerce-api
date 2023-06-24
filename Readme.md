@@ -1,6 +1,9 @@
-- [ ] Right status code
+- [ ] write **Right** status code
 - [x] Category endpoint
-- [ ] cart endpoints
+- [x] Add to cart
+- [ ] Increase count cart
+- [ ] Decrease count cart
+- [ ] Remove from cart
 - [ ] review endpoint
 - [ ] rating endpoint
 - [ ] jwt
