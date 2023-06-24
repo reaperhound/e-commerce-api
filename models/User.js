@@ -21,14 +21,29 @@ const userSchema = mongoose.Schema({
     type: String || Buffer,
   },
   cart: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product", autopopulate: true }],
+    type: [
+      {
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          autopopulate: true,
+        },
+        count: { type: Number, default: 0 },
+      },
+    ],
   },
   productsOwned: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product", autopopulate: true }],
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        autopopulate: true,
+      },
+    ],
   },
 });
 
-userSchema.plugin(require('mongoose-autopopulate'))
+userSchema.plugin(require("mongoose-autopopulate"));
 
 const User = mongoose.model("User", userSchema);
 
