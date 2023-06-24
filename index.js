@@ -4,6 +4,7 @@ const User = require("./models/User");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
 const productsRoute = require("./routes/product")
+const categoryRoute = require("./routes/category")
 
 const app = express();
 app.use(express.json());
@@ -40,6 +41,9 @@ app.use("/users", userRoute);
 
 // /products
 app.use("/products", productsRoute)
+
+// /category
+app.use('/category', categoryRoute);
 
 // Listening
 app.listen(PORT, () => {

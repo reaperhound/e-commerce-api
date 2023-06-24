@@ -150,19 +150,5 @@ router.delete("/:productId", async (req, res) => {
   }
 });
 
-// get by category
-router.get("/category/:category", async (req, res) => {
-  try {
-    const { category } = req.params;
-    const data = await Product.find({ category: category });
-    res
-      .status(200)
-      .json({ sucess: true, data, message: "Products fetched succesfully" });
-  } catch (error) {
-    res
-      .status(500)
-      .json({ error, success: false, message: "Failed to Delete products" });
-  }
-});
 
 module.exports = router;
