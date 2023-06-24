@@ -54,6 +54,42 @@ router.patch("/set/:userId/:cartId", async (req, res) => {
   }
 });
 
+//  increment count
+router.patch("/increment/:userId/:cartId", async (req, res) => {
+  try {
+    const { userId, cartId } = req.params;
+
+    const data = await User.updateOne(
+      { _id: userId, "cart._id": cartId },
+      { $inc: { "cart.$.count": 1 } }
+    );
+
+    res.status(200).json({ success: true, data, message: "Cart count incremented" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error, success: false, message: "Failed to increment Cart count" });
+  }
+});
+
+// decrement count
+router.patch("/decrement/:userId/:cartId", async (req, res) => {
+  try {
+    const { userId, cartId } = req.params;
+
+    const data = await User.updateOne(
+      { _id: userId, "cart._id": cartId },
+      { $inc: { "cart.$.count": -1 } }
+    );
+
+    res.status(200).json({ success: true, data, message: "Cart count decremented" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error, success: false, message: "Failed to decrement Cart count" });
+  }
+});
+
 
 
 module.exports = router;
