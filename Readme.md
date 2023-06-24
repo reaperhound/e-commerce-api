@@ -4,8 +4,9 @@
 - [x] Increase count cart
 - [x] Decrease count cart
 - [x] Remove from cart
-- [ ] review endpoint
-- [ ] rating endpoint
+- [x] review endpoint
+- [x] rating endpoint
 - [ ] jwt
 - [ ] google auth
 - [ ] refactor
+- [ ] add a authenticated field in jwt for protected routes
