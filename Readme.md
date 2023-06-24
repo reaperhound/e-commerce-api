@@ -1,8 +1,8 @@
 - [ ] write **Right** status code
 - [x] Category endpoint
 - [x] Add to cart
-- [ ] Increase count cart
-- [ ] Decrease count cart
+- [x] Increase count cart
+- [x] Decrease count cart
 - [ ] Remove from cart
 - [ ] review endpoint
 - [ ] rating endpoint

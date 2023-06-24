@@ -64,11 +64,15 @@ router.patch("/increment/:userId/:cartId", async (req, res) => {
       { $inc: { "cart.$.count": 1 } }
     );
 
-    res.status(200).json({ success: true, data, message: "Cart count incremented" });
-  } catch (error) {
     res
-      .status(500)
-      .json({ error, success: false, message: "Failed to increment Cart count" });
+      .status(200)
+      .json({ success: true, data, message: "Cart count incremented" });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      success: false,
+      message: "Failed to increment Cart count",
+    });
   }
 });
 
@@ -82,14 +86,36 @@ router.patch("/decrement/:userId/:cartId", async (req, res) => {
       { $inc: { "cart.$.count": -1 } }
     );
 
-    res.status(200).json({ success: true, data, message: "Cart count decremented" });
-  } catch (error) {
     res
-      .status(500)
-      .json({ error, success: false, message: "Failed to decrement Cart count" });
+      .status(200)
+      .json({ success: true, data, message: "Cart count decremented" });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      success: false,
+      message: "Failed to decrement Cart count",
+    });
   }
 });
 
-
+// delete cart item
+router.delete("/delete/:userId/:cartId", async (req, res) => {
+  try {
+    const { userId, cartId } = req.params;
+    const data = await User.updateOne(
+      { _id: userId },
+      { $pull: { cart: { _id: cartId } } }
+    );
+    res
+      .status(200)
+      .json({ success: true, data, message: "Cart deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      success: false,
+      message: "Failed to delete cart",
+    });
+  }
+});
 
 module.exports = router;
