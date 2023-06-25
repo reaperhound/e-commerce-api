@@ -6,7 +6,9 @@
 - [x] Remove from cart
 - [x] review endpoint
 - [x] rating endpoint
-- [ ] jwt
+- [x] jwt
 - [ ] google auth
 - [ ] refactor
 - [ ] add a authenticated field in jwt for protected routes
+
+use protected page via checking the localSTorage for token or the authorized key in the field
