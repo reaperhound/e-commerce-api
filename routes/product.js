@@ -38,7 +38,7 @@ router.get("/:productId", async (req, res) => {
 // add Products
 router.post("/", async (req, res) => {
   try {
-    const { owner, title, description, image, category, price, brand } =
+    const { owner, title, description, image, category, price, brand, size } =
       req.body;
 
     if (
@@ -49,6 +49,7 @@ router.post("/", async (req, res) => {
       !category ||
       !price ||
       !brand
+      // ! size
     ) {
       const missingFields = [];
 
@@ -71,6 +72,9 @@ router.post("/", async (req, res) => {
       if (!category) {
         missingFields.push("category");
       }
+      // if (!size) {
+      //   missingFields.push("size");
+      // }
       return res._construct(404).json({
         success: false,
         message: `Enter ${missingFields.map((fields) => fields)}`,

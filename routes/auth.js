@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
     await user.save();
 
     const token = jwt.sign(
-      { userId: user._id, authorized: true },
+      { userId: user._id,username: user.username, authorized: true },
       "secret_key"
     );
 
@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
         .status(401)
         .json({ success: false, message: "Password doesn't match" });
     }
-    const token = jwt.sign({userId: user._id, authorized: true}, 'secret_key')
+    const token = jwt.sign({userId: user._id, username: user.username, authorized: true}, 'secret_key')
 
     // decode code 👇
     // const decoded = jwt.decode(token)
